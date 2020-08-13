@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+  <div id='test_graph'></div>
+</body>
+</html>
+<script src="static/3d-force-graph/dist/3d-force-graph.min.js"></script>
+<script>
+  // Random tree
+  const N = 300;
+  const gData = {
+    nodes: [...Array(N).keys()].map(i => ({ id: i })),
+    links: [...Array(N).keys()]
+      .filter(id => id)
+      .map(id => ({
+        source: id,
+        target: Math.round(Math.random() * (id-1))
+      }))
+  };
+
+  const Graph = ForceGraph3D()
+    (document.getElementById('test_graph'))
+      .jsonUrl('./test.json');
+</script>
